@@ -7,29 +7,37 @@
 </div>
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
   <!-- This is the tree node template for leaf nodes -->
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding
-  (click)="perform(node)">
+  <mat-tree-node *matTreeNodeDef="let element" matTreeNodePadding
+  (click)="perform(element)" 
+  [class.RSelected]="(node)?node.id==element.id:false">
     <!-- use a disabled button to provide padding for tree leaf -->
-    <button mat-icon-button>
+    <button mat-icon-button (click)="delete(element)">
               <mat-icon>delete</mat-icon>
     </button>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="edit(element)">
             <mat-icon>edit</mat-icon>
     </button>
-    <button mat-icon-button (click)="add(node)">
+    <button mat-icon-button (click)="add(element)">
             <mat-icon>add</mat-icon>
     </button>
-    <input type="text" class="RCategory" [(ngModel)]="node.name">
+    <input type="text" class="RCategory" [(ngModel)]="element.name">
   </mat-tree-node>
   <!-- This is the tree node template for expandable nodes -->
-  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding (click)="perform(node)">
+  <mat-tree-node *matTreeNodeDef="let element;when: hasChild" matTreeNodePadding (click)="perform(element)" 
+  [class.RSelected]="(node)?node.id==element.id:false">
     <button mat-icon-button matTreeNodeToggle
-            [attr.aria-label]="'toggle ' + node.name">
+            [attr.aria-label]="'toggle ' + element.name">
       <mat-icon class="mat-icon-rtl-mirror">
-        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+        {{treeControl.isExpanded(element) ? 'expand_more' : 'chevron_right'}}
       </mat-icon>
     </button>
-    {{node.name}}
+    <button mat-icon-button (click)="edit(element)">
+            <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="add(element)">
+            <mat-icon>add</mat-icon>
+    </button>
+    <input type = "text" [(ngModel)]="element.name">
   </mat-tree-node>
 </mat-tree>
 

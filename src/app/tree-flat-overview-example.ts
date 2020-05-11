@@ -82,6 +82,14 @@ export class TreeFlatOverviewExample {
   add(node:ExampleFlatNode){
     this.editing = true;
   }
+  delete(node:ExampleFlatNode){
+      this.editing = false;
+      alert(`Attempting to delete node: ${node.id}`);
+  }
+  edit(node:ExampleFlatNode){
+    this.editing = false;
+    alert(`Attempting to edit node: ${node.id} with new name: ${node.name}`);
+  }
   save(){
     if(this.child){
       alert(`Adding child:${this.child} to parent:${this.node.id}`);

@@ -12,7 +12,17 @@ body {
   float: right;
   margin: 8px;
 }
-
+.RSelected{
+  //background-color:blue;
+ // border-color: blue;
+  //border-style: solid;
+  font-weight: bold;
+  color:rgb(53, 0, 50);
+}
+.RSelected input {
+  font-weight: bold;
+  color:indigo
+}
 
 /**  Copyright 2019 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
