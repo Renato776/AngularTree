@@ -11,16 +11,9 @@
   (click)="perform(element)" 
   [class.RSelected]="(node)?node.id==element.id:false">
     <!-- use a disabled button to provide padding for tree leaf -->
-    <button mat-icon-button (click)="delete(element)">
-              <mat-icon>delete</mat-icon>
+    <button mat-icon-button disabled="true">
     </button>
-    <button mat-icon-button (click)="edit(element)">
-            <mat-icon>edit</mat-icon>
-    </button>
-    <button mat-icon-button (click)="add(element)">
-            <mat-icon>add</mat-icon>
-    </button>
-    <input type="text" class="RCategory" [(ngModel)]="element.name">
+    {{element.name}}
   </mat-tree-node>
   <!-- This is the tree node template for expandable nodes -->
   <mat-tree-node *matTreeNodeDef="let element;when: hasChild" matTreeNodePadding (click)="perform(element)" 
@@ -31,13 +24,7 @@
         {{treeControl.isExpanded(element) ? 'expand_more' : 'chevron_right'}}
       </mat-icon>
     </button>
-    <button mat-icon-button (click)="edit(element)">
-            <mat-icon>edit</mat-icon>
-    </button>
-    <button mat-icon-button (click)="add(element)">
-            <mat-icon>add</mat-icon>
-    </button>
-    <input type = "text" [(ngModel)]="element.name">
+    {{element.name}}
   </mat-tree-node>
 </mat-tree>
 
