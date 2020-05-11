@@ -11,8 +11,7 @@ interface FoodNode {
   children?: FoodNode[];
   id:number;
 }
-
-const TREE_DATA: FoodNode[] = [
+let TREE_DATA: FoodNode[] = [
   {
     name: 'Fruit',
     children: [
