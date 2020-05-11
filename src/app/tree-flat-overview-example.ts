@@ -65,7 +65,9 @@ export class TreeFlatOverviewExample {
       id:node.id
     };
   }
-
+  editing:boolean = false;
+  child:string;
+  node:ExampleFlatNode;
   treeControl = new FlatTreeControl<ExampleFlatNode>(
       node => node.level, node => node.expandable);
 
@@ -77,9 +79,19 @@ export class TreeFlatOverviewExample {
   constructor() {
     this.dataSource.data = TREE_DATA;
   }
-  perform(node:ExampleFlatNode){
-      console.log(node.id);
+  add(node:ExampleFlatNode){
+    this.editing = true;
+  }
+  save(){
+    if(this.child){
+      alert(`Adding child:${this.child} to parent:${this.node.id}`);
+      this.child = '';
+      this.editing = false;
     }
+  }
+  perform(node:ExampleFlatNode){
+      this.node = node;
+  }
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 }
 
